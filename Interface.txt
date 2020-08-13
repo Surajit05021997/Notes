@@ -1,0 +1,33 @@
+- Methods in interface are by default public and abstract.
+- From Java 8, Interface can have static and default methods.
+- An Interface does not extend Object class.
+- If an interface does not extend Object class, 
+  then why we can call methods of Object class on interface variable like below.
+
+	interface A
+	{   
+	}
+	class InterfaceAndObjectClass
+	{
+		public static void main(String[] args)
+		{
+			A a = null;
+			a.equals(null);
+			a.hashCode();
+			a.toString();
+		}
+	}
+
+	If an interface does not extend Object class, then why the methods of Object class are visible in interface.?
+	interface A
+	{
+		@Override
+		public boolean equals(Object obj);
+		@Override
+		public int hashCode();
+		@Override
+		public String toString();
+	}
+	Explanation :
+	This is because, for every public method in Object class, 
+	there is an implicit abstract and public method declared in every interface which does not have direct super interfaces.

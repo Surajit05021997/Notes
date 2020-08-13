@@ -1,0 +1,32 @@
+ -- Selenium is automation testing tool for web application.
+
+-- Selenium Web Driver API allows the test scripts to communicate directly with the web browser without the need of any server 
+   which was required for selenium RC(Previous version of Selenium).
+
+-- Basic steps : 
+	- First we need to add required jar files externally or adding dependencies in pom.xml file.
+	- Now we need to set the property and let java know that what driver we are using and its path using 
+		System.setProperty("webdriver.chrome.driver","//path");
+	- Now we need driver instance : WebDriver driver = new ChromeDriver(); This statement would open up the chrome browser.
+	- Now we can use this driver instance to do lot of things.
+	
+-- driver.navigate.to("url"); or driver.get("url"); Open that url
+   driver.navigate.forward(); 
+   driver.navigate.back(); 
+   driver.navigate.refresh();
+   
+-- WebElements are the different elements in a  web page such as text box, radio button, drop-down, etc.
+   
+-- WebElement element = driver.findElement(By.id("..."));
+                                          (By.className("..."));
+										  (By.linkText("..."));
+										  (By.partialLinkText("..."));
+										  (By.cssSelector("..."));
+										  (By.xpath("..."));
+									
+-- element.click();  element.sendKeys("data to send to text box");
+
+-- Data Driven Testing : Its a testing framework where data is stored externally in xls,xml format.
+                         We put these data to our test script to test the web application and then compare the expected o/p with the actual o/p.
+						 
+-- 	

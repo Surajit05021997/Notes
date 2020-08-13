@@ -1,0 +1,41 @@
+Test Driven Development (TDD)
+-----------------------------
+-- Its an iterative development process.
+-- We write the test cases first even before writing the application code.
+-- So all the test cases will fail at first first.
+-- Next iteration application code is written and the test cases are run.
+-- According to the failed test cases we add code to our application code.
+-- We follow this untill all the test cases passes.
+
+Behaviour Driven Development (BDD)
+----------------------------------
+-- Its like TDD but here test are written in plain english type grammer.
+-- Test are explained as behaviour of application.
+-- It bridges the gap between business and technical language.
+
+Cucumber
+--------
+-- Its a testing framework or automation testing tool which supports BDD.
+-- We write the test in simple english type language called Gherkin.
+-- We write out test in feature file.
+-- Cucumber is written in ruby.
+
+Feature File
+------------
+-- First we write the feature file whose extention is .feature
+-- One feature file will contain one feature.
+-- One feature file may contain more than one scenario. These scenario are called steps.
+-- 
+
+Steps to run test
+-----------------
+-- Run the feature file. It will provide the step definetion templetes.
+-- Create step definetion class with these step definetion and write the testing code inside these step definetion.
+-- Create runner class and run as jUnit.
+   @RunWith(Cumcumber.class)
+   @CucumberOptions(features="feature folder name", glue="step definetion package name", plugin={"pretty"})
+   public class runner {}
+
+
+-- plugin={"pretty"}   used to generate report
+

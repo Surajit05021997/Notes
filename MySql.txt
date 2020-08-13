@@ -1,0 +1,59 @@
+-- Database : Place where we store data
+-- Database Management System(DBMS) : Software used to manage our database
+-- Relational Database : Database where we store data in the form of tables and these forms may or may not be related to each other.
+-- Structured Query Language(SQl) : Language used to manage the database
+
+-- Data type : Numeric Type - INT, FLOAT, DOUBLE
+			   String Type - CHAR, VARCHAR, TEXT
+			   Date and Time - DATE, TIME, DATETIME
+			   
+-- CHAR VS VARCHAR
+	The short answer is: VARCHAR is variable length, while CHAR is fixed length.
+	
+	CHAR is a fixed length string data type, so any remaining space in the field is padded with blanks.
+	CHAR takes up 1 byte per character. So, a CHAR(100) field (or variable) takes up 100 bytes on disk, regardless of the string it holds.
+
+	VARCHAR is a variable length string data type, so it holds only the characters you assign to it.
+	VARCHAR takes up 1 byte per character, + 2 bytes to hold length information.
+	For example, if you set a VARCHAR(100) data type = ‘Jen’, then it would take up 3 bytes (for J, E, and N) plus 2 bytes, or 5 bytes in all.
+	
+-- CREATE DATABASE Database_Name;
+   SHOW DATABASE Database_Name;
+   SHOW DATABASES;
+   USE Database_Name;
+   DROP DATABASE Database_Name;
+   
+-- CREATE TABLE employee_table(  
+    id int NOT NULL AUTO_INCREMENT,  
+    name varchar(45) NOT NULL,  
+    occupation varchar(35) NOT NULL,  
+    age int NOT NULL,  
+    PRIMARY KEY (id)  
+	); 
+
+-- INSERT INTO table_name VALUES ( value1, value2,...valueN ); 
+   INSERT INTO table_name ( field1, field2,...fieldN )  VALUES  ( value1, value2,...valueN );
+
+-- UPDATE table_name   SET field1=new-value1, field2=new-value2, ...  WHERE condition;     
+	
+-- TRUNCATE TABLE Table_Name;    Delete all rows without deleting the table structure.
+-- DROP TABLE Table_Name;     Delete the whole table structure.
+-- DELETE FROM Table_Name WHERE condtion;     Delete selected rows
+
+
+
+
+
+-- REGEXP is used to match pattern.
+	Ex : SELECT DISTINCT CITY FROM STATION WHERE CITY REGEXP "[aeiou]$";
+		selects the distinct city name ending with a,e,i,o or u.
+
+-- The RIGHT() function extracts a number of characters from a string (starting from right).
+	Ex : SELECT NAME FROM STUDENTS WHERE MARKS>75 ORDER BY RIGHT(NAME,3),ID;
+		Here we are selecting the names of students having marks > 75 sorted by the last three charecter of their name and secondary sort by id if
+		last three characters are same.
+
+
+
+
+   

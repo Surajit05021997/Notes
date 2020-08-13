@@ -1,0 +1,57 @@
+-- Spring is a framework which has lots of feature to work with web application, to achieve loose coupling i.e. to remove dependencies.
+-- To remove dependency we use the concept Dependency Injection where we do not create hard coded object using new keyword.
+   We make use of spring features to get the object from spring container.
+   
+Beans
+-----
+-- Beans are just instance object stored in the spring container.
+-- getBean() is used to get the bean from spring container.
+-- We need BeanFactory or ApplicationContex interface reference to use getBean().
+
+-- ApplicationContext context = new ClassPathXmlApplicationContext("xmlFileName.xml");
+   context.getBean("bean id");   this will return the object
+   
+-- Inside XML File
+   <beans>
+     <bean id="..." class="com.something.className"></bean>
+   </beans>
+   
+-- Above two points shows how we can avoid new keyword to create object rather telling spring to getbthe object.
+   And that how we achieve dependency injection.
+   
+-- So to achieve this we need to configure our xml file.
+-- There are three ways to configure
+	- using xml
+	- using annotation
+	- using java
+	
+-- SetterInjection : If our bean class has data member we have to set the value by using the property tag in xml file. This is known as setterInjection.
+   <beans>
+     <bean id="..." class="com.something.className">
+	   <property name="data member" value="..."></property>
+	 </bean>
+   </beans> 
+   
+-- Constructor Injection : We can also use constructor to set the values of our data member of bean class. This is known as constructor injection.
+   <beans>
+     <bean id="..." class="com.something.className">
+		<constructor-arg value="..."></constructor-arg>
+	 </bean>
+   </beans>
+	
+Annotation Configuration
+------------------------
+-- We have to add @Component above our bean class.
+-- And add <context: component-scan base-package="..."></context: component-scan> in xml file
+-- Here we dont need to add bean tag.
+-- Here the bean id for context.getBean("bean id"); will be the class name with first letter in lowercase.
+
+
+-- To achieve full annotation we use
+	@Configuration
+	@ComponentScan(basePackage="...")      this is the replacement of xml file
+	public class AppConfig{}
+	
+	
+	ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+    context.getBean(ClassName.class);

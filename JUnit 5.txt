@@ -1,0 +1,56 @@
+-- Jupiter is the API which we are going to interact to write our test.
+
+-- We need to add two dependency 
+	- junit jupiter engine
+	- junit jupiter api
+	
+-- We use @Test to write test cases.
+   Its makes the method a test method.
+
+-- Inside the test method we write expected and actual value
+   and compare in assertEquals(expected, actual) method.
+   Ex : Suppose we have Addition class with a add method and we want to test add method
+        
+		class AdditionTest{
+		@Test
+		public void test(){
+			Addition obj = new Addition();
+			int expected = 2;
+			int actual = obj.add(1, 1);
+			assertEquals(expected, actual);
+		  }
+		}
+
+-- Test Life Cycle hooks
+	- @BeforeAll : Runs before any of the test run only once
+	- @BeforeEach : Runs before every test case
+	- @AfterAll : Runs after all the test case run only once
+	- @AfterEach : Runs after every test case
+	
+-- @BeforeAll and @AfterAll method must be static.
+   Bcz @BeforeAll and @AfterAll are called even before the object of our test class is created by the jUnit.
+
+-- By default jUnit creates seperate test class object for every test case method.
+   To create only one test class instance we use @TestInstance(TestInstance.Lifecycle.PER_CLASS) above our test class.
+ 
+-- @DisplayName("...")   To provied our own name to a test case or test class
+   @Disabled   To disable or skip a test case 
+   @RepeatedTest(4)   To repeate a test case multiple time(we dont we @Test then)   
+   @Tag   To run test depending on tags
+   
+-- If we want to group some test cases we create a inner class and annotate with @Nested
+   Ex : class Sample{
+			@Test
+			@Nested
+			class Demo{
+				@Test
+				@Test
+			}
+		}   
+
+-- When we want to have multiple checks at once we use assertAll
+   assertAll(
+			()->assertEquals(2,obj.add(1, 1)),
+			()->assertEquals(4,obj.add(2, 2)),
+			()->assertEquals(-2,obj.add(-4, 2))
+			);

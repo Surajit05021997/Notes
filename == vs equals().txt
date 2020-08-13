@@ -1,0 +1,4 @@
+-- == checks the reference
+-- .equals() of Object class also checks the reference
+    but if we want to check by value we need to override the equals method.
+-- .equals() method of string class is already override and it checks for the value

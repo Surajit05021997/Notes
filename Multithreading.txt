@@ -1,0 +1,143 @@
+Thread
+------
+	- Thread is the smallest part of a process that can run simultaneously with other thread of the same process.
+	- Since each thread has seperate path of execution, exception occuring at one thread does not effect other thread of same process.
+	- All threads of a process share same memory.
+	- Running multiple thread simultaneously is called multithreading.
+	
+Creating Thread
+---------------
+	- Two ways :
+		- By extending Thread class
+			- Create a class that extend Thread class
+			- Override the run method
+			- Create a instance of our thread class and ivoke the start() method.
+			- Ex : 	public class CreatingThreadUsingThreadClass extends Thread {
+						@Override
+						public void run() {
+							System.out.println("Thread Running...");
+						}
+						public static void main(String args[]) {
+							CreatingThreadUsingThreadClass obj = new CreatingThreadUsingThreadClass();
+							obj.start();
+						}
+					}
+					
+		- By implementing Runnable interface
+			- Create a class that implements Runnable interface
+			- Override the run() method
+			- Create a instance of our thread class
+			- Create a instance of Thread class and pass our thread class instace through the constructor
+			- ivoke the start() method
+			- Ex: 	public class CreatingThreadUsingRunnableInterface implements Runnable {
+						@Override
+						public void run() {
+							System.out.println("Thread Running...");
+						}
+						public static void main(String args[]) {
+							CreatingThreadUsingRunnableInterface obj =new CreatingThreadUsingRunnableInterface();
+							Thread thread = new Thread(obj);
+							thread.start();
+						}
+					}
+			
+Thread Life Cycle
+-----------------
+	- NEW : When a instance of thread class is created and before the start() is ivoked
+	- RUNNABLE : When the start() is ivoked but is wating for its execution i.e. run() method is not yet executed
+	- RUNNING : When the run() method has to execute. From this state it can go to block or dead state.
+	- BLOCK : When thread is still alive but not running currently may be bcz of sleep(),wait(),suspend()
+	- DEAD : When the run() has finished its execution
+	
+Thread Scheduler
+----------------
+	- It decides which thread should run first.
+	- It uses preemptive or time slicing scheduling.
+	- Depends on the JVM which thread scheduling technique will be used
+	- In preemtive scheduling we set the priorities of the thread and according to the priority threads are run.
+	
+Thread Priority
+---------------
+	- Thread priority is set using the setPriority() method.
+	- Priority value ranges from 1 to 10
+	- This method can take three final values 
+		- MIN_PRIORITY    value is 1
+		- NORM_PRIORITY   value is 5
+		- MAX_PRIORITY    value is 10
+	
+Sleep() Method
+------------
+	- Used to sleep a thread for a particular amountin time.
+	- Thread.sleep(long milliseond);
+	- Throws InterruptedException
+	- Thus must be handled using try catch block
+	
+Yield() Method
+--------------
+	- If any thread executes yield method , thread scheduler checks if there is any thread with same or high priority than this thread. 
+	  If processor finds any thread with higher or same priority then it will move the current thread to Ready/Runnable state 
+	  and give processor to other thread and if not – current thread will keep executing.
+	
+	
+-- We can not start same thread twice. IllegalThreadStartException is thrown.
+-- We can not call run method directly. If we call then seperate call stack is not created.
+   And run method will act as a normal method.
+
+
+Daemon Thread
+-------------
+	- It is a service provider thread that runs at the background and provide service to the user thread.
+	- Its life depends on user thread i.e. it dies when all user thread dies.
+	- It is a low priority thread.
+	- Ex : Garbage Collector, Finalizer
+	
+Garbage Collection
+------------------
+	- It is the process of destroying the unreferenced object and reclaming the used memory.
+	- It is performed automaticlly.
+	- Ways to have unreferenced object
+		- By nulling the reference
+			Employee e = new Emloyee();
+			e=null;
+		- By assigning the reference to onother
+			Employee e1 = new Emloyee();
+			Employee e2 = new Emloyee();
+			e1=e2;     now e1 is available for garbage collection
+		- By anonymous object
+			new Employee();
+	- finalize() is ivoked each time before the object is garbage collected. It is used to perform cleanup processing.
+
+Synchronization
+---------------
+	- In multithreading, multiple thread may try to access shared resources at the same time which will create thread interference.
+	- To prevent thread interference we use synchronization.
+	- Synchronization ensures that only one thread can access shared resources at a given point of time.
+	- Synchronization can be achieved by
+		- Synchronized method
+		- Synchronized block
+	- Object has a lock associated with it. To enter a synchronized block and access the object, thread must have the object's lock.
+	  All other threads trying to enter will be suspended untill the first thread exits.
+	
+Deadlock
+--------
+	- Deadlock is a situation when a thread is waiting for object lock aquired by another thread 
+	  while the second thread is waiting for the object lock aquired by the first thread.
+
+Inter-Thread Communication
+--------------------------
+	- wait()-It tells the calling thread to give up the lock and go to sleep until some other thread enters the same monitor and calls notify().
+	- notify()-It wakes up one single thread that called wait() on the same object. 
+		       It should be noted that calling notify() does not actually give up a lock on a resource.
+	- notifyAll()-It wakes up all the threads that called wait() on the same object.
+
+Thread Pool
+-----------
+	- Creating a thread in Java is an expensive operation. 
+	  And if you start creating new thread instance everytime to execute a task, application performance will degrade surely.
+	- A thread pool is a collection of pre-initialized threads.
+	- A thread from the thread pool picks up a task and after task complition returns to the thread pool.
+	- We can use ThreadPoolExecutor to create thread pool in Java.
+	
+
+
+

@@ -1,0 +1,41 @@
+Generic
+-------
+	- Introduced in java 5.
+	- Generics provides a mechanism to use same piece of code with different inputs.
+	- We can use generics with class, methods or interface.
+	- It privents from ClassCastException.
+		- ClassCastException occurs when a class object can not cast to another class object.
+		- When a parent obj is trying to cast to child object, it throws ClassCastException.
+	- One common use of generics is in Collection where we restrics our collection object to store only a particular type of data.
+
+Generics With Method
+--------------------
+	public class Demo 
+	{ 
+		public static <E> E display(E n) {
+			E store = n;
+			return store;
+		}
+		public static void main(String[] args) 
+		{ 
+			System.out.println(Demo.display("Suro"));
+			System.out.println(Demo.display(123));
+		}
+	}	  
+	
+Generics With Class
+-------------------
+	public class Demo <E>
+	{	 
+		public E display(E n) {
+			E store = n;
+			return store;
+		}
+		public static void main(String[] args) 
+		{ 
+			Demo<String> obj=new Demo<String>();
+			System.out.println(obj.display("Suro"));
+			Demo<Integer> obj2=new Demo<Integer>();
+			System.out.println(obj2.display(123));
+		}
+	}  

@@ -1,0 +1,79 @@
+- We add script tag inside body with src="jsFileName.js"
+	Ex : <body>
+	<script src='index.js'></script>
+	</body>
+
+- console.log('...');   used to print data in console
+- primitive data type
+	String
+	Number
+	boolean
+	undefined
+	null
+	
+- Default value is undefined.
+- // used to single line write comment.
+	/*
+	.
+	.
+	*/  multi line comment
+	
+- JavaScript is dynamically typed language i.e. type of the variable can be changed at runtime. 
+- Reference type
+	Object
+	Array
+	
+- Object
+	let person = {
+	name: "Suro",
+	age: 23
+	};
+	
+	Access object property
+		Dot Notation
+			person.name
+		Bracket Notation
+			person['name']
+			
+- Array
+	let color = ['red','blue'];
+	color[2] = 'green';   array script is dynamic, also we can add different type of data
+	access element - color[0]
+	
+- function display() {
+	
+	}
+	
+- Navigator Object
+	The navigator object contains information about the browser.
+		one such property - geolatiom : return geolocation object that can be used to get longitude and latitude.
+		
+- == checks for value only
+  === checks for value and type
+  But Comparing two JavaScript objects will always return false.
+  var x = new String("John");             
+  var y = new String("John");
+  // (x === y) is false because x and y are different objects
+  
+- With JavaScript, methods and properties are also available to primitive values,
+  because JavaScript treats primitive values as objects when executing methods and properties.
+  
+- JavaScript will try to convert strings to numbers in all numeric operations except + bcz + is used to concatenate.
+	var x="100";
+	var y="10";
+	var result=x/y; ans-10
+	var result=x*y; ans-1000
+	var result=x-y; ans-90
+	var result=x+y; ans-10010
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

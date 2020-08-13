@@ -1,0 +1,97 @@
+Functional Interface
+--------------------
+-- An interface with only one abstract method.
+-- It can have any no of default and static methods.
+-- It can also declare methods of Object class.
+-- Also called single abstract method interface(SAM).
+-- Functional interface can not extend interface with abstract method
+   bcz then the functional interface has to declare the abstract methods from the parent interface
+   and the functional interface will then have more tha one abstract method.
+-- Ex: Runnable, Comparator, Comparable
+-- @FunctionalInterface : Make sure that functinal interface has only one abstract method.
+                          If more than one abstrat method then gives compilation error (Invalid @FunctionalInterface annotation)
+						  Its optional.
+						  
+Lambda Expression
+-----------------
+-- Its a way to provide the implementation of the only abstract method in a functional interface.
+-- Its like a method without the method name.
+-- We write the lambda expression and assign it to the functional interface referance.
+   We use this reference to call the abstract method. So when this method is called, lambda expression is called.
+-- (parameter)->{body}
+-- It helps to iterate, filter and extract data from collection.
+   Ex: list.forEach(n->syso(n);)
+   
+   Ex with funtional interface : 
+   @FunctionalInterface
+	interface MyFunctionalInterface {
+		public String sayHello();
+	}
+	public class Example {
+		public static void main(String args[]) {
+			MyFunctionalInterface msg = () -> {
+				return "Hello";
+			};
+			System.out.println(msg.sayHello());
+		}
+	}
+   
+-- forEach() : Used to interate collection or stream elements.
+               Default method defined in Iterable interface.
+			   list.forEach(n->syso(n);)
+			   list.stream().map(x->x*x).forEach(y->System.out.println(y));
+			           |______Here .stream() is creatin the stream
+					   
+			   
+Stream API
+----------
+-- Stream is a sequece of objects.
+-- Used to process and work with the collections of objects to get the desired output.
+-- There are two operation: Intermediate operation and Terminal operation.
+-- Intermediate Operation :
+		- map : to modify all the elements of the stream after the after applying the function
+				List square = list.stream().map(x->x*x).collect(Collectors.toList());
+				
+		- filter : to filter out the desired elements from the stream
+				   List result = list.stream().filter(s->s.startsWith("S")).collect(Collectors.toList());
+				   
+		- sorted : to sort the elements of stream
+				   List result = list.stream().sorted().collect(Collectors.toList());
+				   
+-- Terminal Operation :
+		- collect : collect and return the elements after the intermediate operation
+		- forEach : iterate through the stream elements
+					list.stream().map(x->x*x).forEach(y->System.out.println(y));
+					
+		- reduce : to reduce the elements of stream to single value.
+				   int even = list.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
+				   
+Method Reference
+----------------
+-- It is a shorthand notation of lambda expression.
+-- :: operator is used in method reference to seperate the class or object from the method.
+-- Ex: forEach(x->System.out.println(x));  can be written as  forEach(System.out::println);				   
+			   
+Optional
+--------
+-- If we perform some operation on null reference we will get NullPointerException.
+-- Optional class is used to deal with the null pointer exception.
+-- Optional class object is a container object which will either contain non-null value or no value which is called empty.
+-- Commonly used methods are : 
+	- ofNullable() : Return an optional describing the value if non-null value otherwise return empty optional.
+	- get() : Get the value from optional object.
+	- isPresent() : Return true if value is present or return false.
+	- orElse() : Return the value if present, otherwise return other.
+				 
+Date Time API
+-------------
+-- Prior to Java 8, all the Date classes are mutable, so they are not thread safe.
+-- Date Time API provide immutable classes such as LocalDate, LocalTime, LocalDateTime.
+	- LocalDate is an immutable class that represents Date with default format of yyyy-MM-dd.
+		LocalDate today = LocalDate.now();
+		LocalDate firstDay_2014 = LocalDate.of(2014, Month.JANUARY, 1);
+	- LocalTime is an immutable class whose instance represents a time in the human readable format.
+		LocalTime time = LocalTime.now();
+		LocalTime specificTime = LocalTime.of(12,20,25,40);
+	- LocalDateTime is an immutable date-time object that represents a date-time, with default format as yyyy-MM-dd-HH-mm-ss.zzz.
+		LocalDateTime today = LocalDateTime.now();

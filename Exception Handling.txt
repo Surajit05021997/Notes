@@ -1,0 +1,14 @@
+- Rule 1 : The finally block always run
+		(Though there are exceptions to it. Only exception is System.exit(). But let's stick to this for sometime.)
+
+	Rule 2 : the statements in the finally block run when control leaves a try or a catch block.
+		The transfer of control can occur as a result of normal execution ,of execution of a break , continue,
+		goto or a return statement, or of a propogation of an exception.
+
+		In case of a return statement specifically, the control has to leave the calling method , 
+		And hence calls the finally block of the corresponding try-finally structure. The return statement is executed after the finally block.
+
+		In case there's a return statement in the finally block also, it will definitely override the one pending at the try block ,
+		since its clearing the call stack.
+		
+- When we try to operate on null reference, we get NullPointerException.

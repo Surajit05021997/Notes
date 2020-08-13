@@ -1,0 +1,102 @@
+SPRING BOOT
+===========  
+Spring
+------
+-- Its a framework to write java ee application.
+
+-- It provide built-in templetes, programming or configuration model like for connecting to database.
+
+-- Problems in Spring:
+   - Huge framework
+   - Multiple configuration steps
+   
+Maven
+-----
+-- Its a build and dependency management tool.
+   It lets us declare all the dependencies in a single file i.e. pom.xml file.
+   Dependency are the JAR files requires to compile,run or test the application.
+   All these dependencies are stored in the pom.xml file.
+   
+Spring Boot
+-----------
+-- Its a frameworks to write java enterprise application.
+
+-- It is used to create spring based application.
+   Creating spring applicatio  requires a lot of configuration. Spring Boot helps to reduce these configuration task and lets up focus on the logical coding part.
+
+-- It does not require external serve to deploy our application. It has an embedded tomcat client to deploy application where spring does not have its our client.
+ 
+-- Basic steps to make a maven project in spring boot application:
+	- Add this paret tag pom.xml
+		<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.1.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+		</parent>
+	- Add dependency pom.xml
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	- Add a main class with a annotation @SpringBootApplication
+	- Inside class call the run method
+		SpringApplication.run(mainClassName.class,args);
+		
+Controller
+----------
+-- Its a class with @Controller annotation which contains all the methods mapped with the url using annotation @RequestMapping(/url).
+   Whenever a request i.e the uri, is sent from client side, spring mvc is going to check inside the controller with a method which is linked with that uri
+   and execute that method and also returns the response back to the client if its returning something.
+	
+Service
+-------
+-- Its a class with @Service annotation which indicates that this class is a spring bussiness service class.
+-- When the spring app runs, an instance of this service class is stored and this instance can be used in the controller by using the @Autowired.
+   So when we write @Autowired        
+	                private SpringService service;    spring is going to inject the service instance that was stored because of @Service annotation.
+	
+HTTP methods for RESTful api
+----------------------------
+-- GET : Read
+-- POST : Create
+-- PUT : Update
+-- DELETE : Delete
+
+PathVariable
+------------
+-- When some data is being send from the client side through URI templete variable then @PathVariable bind this data to the method paramerter.
+-- Ex: @RequestMapping("/someURI/{id}")
+       pubilic void methodName(@PathVariable int id){
+	   }
+
+RequestBody
+-----------
+-- When client post something in the form of HTTPRequestBody basically in json format, @RequestBody binds this request body to an object. 
+   Spring MVC converts this request body to java object.
+   @PostMapping("someURI")
+   public void methodName(@RequestBody className obj){
+   }
+   
+Configure SpingBoot App
+-----------------------
+-- We edit the applicatio.properties file to configure.
+-- It accepts value in key value pair.
+   Ex: server.port:3000
+   
+Java Persistence API(JPA)
+-------------------------
+-- Mapping java objects to a relational database table is called object-relational Mapping (ORM).
+-- The Java Persistence API (JPA) is one possible approach to ORM. 
+-- Via JPA the developer can map, store, update and retrieve data from relational databases to Java objects and vice versa.
+-- We need to make a bean class and provide the @Entity above class to use this as a table and @Id above a member variable to use as primary key.
+-- In JPA we use entity manager to manage our entity. We use presist(object) to add it to table.
+   We also need to provide @Transaction.
+-- To avoid these many steps we have SpringDataJPA.
+-- In SpringDataJPA we have jpaRepository which is an interface which have lots of method to handle crud operation like save,findAll,findById,deleteAll,etc.
+-- JPA is basically specification and hibernate provide the implementation.    
+
+
+	
+	
+

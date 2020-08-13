@@ -1,0 +1,57 @@
+-- Lambda Expression is the implementation of functional interface.
+-- java.util.function package contains some of the predefined functional interface
+	There are more than 40 functional interfaces which are categorized into four category :
+		- Supplier
+		- Consumer
+		- Predicate
+		- Function
+		
+--       /*
+		 * Supplier<T> is a predefined functional interface with type parameter T 
+		 * and with an abstract method get() which does not take any argument and return T type i.e. T get();
+		 */
+		Supplier<Integer> supplier1 = () -> 25; //Expression body does not require return statement
+		Supplier<String> supplier2 = () -> {
+			return "Hello";                     //Block body requires return statement
+		};
+		
+		int value = supplier1.get();
+		String str = supplier2.get();
+		System.out.println(value);
+		System.out.println(str);
+		
+--		/*
+		 * Consumer<T> is another predefined functional interface with type parameter T
+		 * and with an abstract method accept(T t) and return void i.e. void accept(T t);
+		 */
+		Consumer<String> consumer = (String s) ->{
+													System.out.println(s); //Here the block body does not require return
+												 };                        //because consumer does not return anything
+		consumer.accept("Hi..");
+		
+		
+--		/*
+		 * Predicate is a functional interface with type parameter T
+		 * and with an abstract method test(T t) which return boolean i.e. boolean test(T t); 
+		 */
+		Predicate<Integer> predicate = (i) -> {
+			if(i%2==0)
+				return true;
+			else
+				return false;
+		};
+		boolean result = predicate.test(5);
+		System.out.println(result);
+	
+		
+--		/*
+		 * Function is a function interface with type parameter T, R
+		 * and with an abstract method apply(T t) which return R type i.e. R apply(T t);
+		 */
+		Function<Integer, String> function = (i) -> {
+			String s = String.valueOf(i);
+			return s;
+		};
+		String s = function.apply(10);
+		System.out.println(s);
+		

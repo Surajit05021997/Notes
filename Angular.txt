@@ -1,0 +1,111 @@
+Execution Flow
+--------------
+	- Angular started with main.ts. This type script file performs a fuction call bootstrapModule(AppModule). 
+	- AppModule points to a file app.module.ts. 
+	  Its a module that has @NgModule decorator that has declaration all the components, imports for all the module, 
+	  providers for all the servicces and bootstrap that is ued o bootstrap our first component i.e. AppComponent.
+	- Then we bootstrap an angular application and we pass app.module.ts as an argument. In app.module.ts we tell angular: "There is the app component which you should know when you try to start yourself".
+	- And angular now analyze this app component, reading the set up we pass there and there is SELECTOR app-root.
+	- Now, angular is enable to handle app-root in the index.html and knows rules for the SELECTOR.
+	- SELECTOR should insert the app components and have some HTML code - a template attached to him - html component.
+	- This is how Angular application starts.
+
+Component
+---------
+	- Component is the key element in our angular application. The Whole application is built with different component.
+	- ng generate component componentName  or  ng g c componentName    is used to create component.
+	- Component has four files:
+		componentName.component.html
+		componentName.component.css
+		componentName.component.ts
+		componentName.component.spec.ts     used for testing purpose.
+		
+Module
+------
+	- Module is mechanism to group together all the components, other modules, services, directives and pipes.
+	- Module is type script file with @NgModule decorator
+	- @NgModule must have atleast these three properties
+		declaration : []   array that contains the component, directive, pipes
+		imports : []       array that contains other module
+		bootstrap : []     provide the root component to bootstrap 
+	- app.module.ts is the root module
+	
+Template
+--------
+	- Template is basically the html file in a component.
+	- Every component has a template. 
+	This template is the html snippet that is going to get rendered inside the selector tag of this component which is being used in another html file.
+	- So whenever we use a selector tag to call a component then the html part associated with that component
+	i.e. template is going to be rendered inside this selector tag.
+	
+Directive
+---------
+	- Directive are the instruction to DOM element which changes the look, behaviour, structure of a DOM element.
+	- There are three types of directive :
+		Components : Components are itself directive bcz they are adding elements to the DOM
+		Attribute Directive : changes the look and behaviour of DOM element. Ex : NgStyle, NgClass
+		Structural Directive : changes the DOM layout by adding or removing the DOM elements. Ex : *NgFor, *NgIf
+		
+Create Custom Directive
+-----------------------
+	- ng generate directive directiveName
+	- This will create ts file with @Directive decorator have a selector property.
+	- We have to add code inside this class according to our need.
+	- Now we can use this directive selector in html tag as an attribute.
+	Ex : import { Directive, ElementRef } from '@angular/core';
+			@Directive({
+				selector: '[appHighlight]'
+			})
+			export class HighlightDirective {
+				constructor(el: ElementRef) {
+				el.nativeElement.style.backgroundColor = 'yellow';
+				}
+			}
+			
+			Inside html file : 
+			<p appHighlight>Highlight me!</p>
+			
+Data Binding
+------------
+	- Data Binding is the mechanism through which the html and the component interact with each other.
+	- Four Types : 
+		- Interpolation : {{...}} are used. We can have experssion or property from component and it get converted into text and displayed in html.
+		- Property Binding : Its is one-way binding. It is used to set the property of component into the target html element. [] are used. Data flow is from component to html.
+		- Event Binding : Here we use a html element to call a function of a component. () is used.
+		- Two-Way Binding : Here the data can flows from component to html as well as from html to component. [()] is used.
+
+Pipes
+-----
+	- It transforms the data in the format as required and displays the same in the browser.
+	- Pipe takes integers, strings, arrays, and date as input separated with |.
+	- Lowercase pipe, Uppercase pipe, Date pipe, Currency pipe, Decimal pipe
+	- Ex :
+		title = 'my-first-app';  
+		todaydate = new Date();  
+		jsonval = {name: 'Alex', age: '25', address:{a1: 'Paris', a2: 'France'}};  
+		months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'Jun',  'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];  
+		
+		<b>{{title | uppercase}}</b><br/>  
+		<b>{{title | lowercase}}</b>   
+		<b>{{6589.23 | currency:"USD"}}</b><br/>  
+		<b>{{6589.23 | currency:"USD":true}}</b> //Boolean true is used to get the sign of the currency.  
+		<b>{{todaydate | date:'d/M/y'}}</b><br/>  
+		<b>{{todaydate | date:'shortTime'}}</b>    
+		<b>{{ 454.78787814 | number: '3.4-4' }}</b> // 3 is for main integer, 4 -4 are for integers to be displayed.   
+		<b>{{ jsonval | json }}</b>   
+		<b>{{00.54565 | percent}}</b>    
+		<b>{{months | slice:2:6}}</b>  
+		// here 2 and 6 refers to the start and the end index  
+
+Template Driven Form
+--------------------
+ - Most of the work is done in templete.
+   Requires ngForm, ngModel to work with.
+   Need to import FormsModule.
+					   
+Reactive Form
+-------------
+ - Most of the work is done in component.
+   Requires formGroup, formControlName to work with.
+   Need to import ReactiveFormsModule.
+   Validation can be done in component.

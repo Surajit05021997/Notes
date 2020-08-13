@@ -1,0 +1,65 @@
+Java Development Kit (JDK)
+--------------------------
+-- Used by the developer to develop java application.
+-- Contains development tools like java compiler.
+-- When we compile our .java file its get converted to byte code.
+   This byte code is platform independent.
+
+Java Runtime Environment (JRE)
+-----------------------------
+-- Used by the end user to run the java application.
+-- To run java code only JRE is required.
+-- Provide an environment to run java byte codes.
+-- Containd the JVM and set of libraries.
+
+Java Virtual Machine (JVM)
+--------------------------
+-- Its a virtual machin which provide a runtime environment to run the byte code and convert it to .class file.
+
+Compile and Run in cmd
+----------------------
+-- javac HelloWorld.java    to compile.
+-- java HelloWorld     to run the 
+
+Operator Precedence
+-------------------
+-- x++,x-- -> ++x,--x -> *,/,% -> +,-
+-- left to right in an equation
+
+& vs &&
+-------
+-- & checks both side
+-- && checks left side first if its false then its doesn't check the right side bcz result will be false either way
+      if left side is true then only it checks right side.
+
+--  Instance variables (primitive, Wrapper classes, references, objects (non-static)) - Heap
+	Local Variables , references - stack
+	
+Initialization Block
+--------------------
+	This block is executed bfore every constructor call.
+	Ex : class Demo{
+	int i;
+	{
+	int i=10;
+	syso("...");
+	}
+	public Demo(){
+	}
+	psvm(Strings args[]){ 
+	Demo obj = new Demo();
+	syso("...")
+	}
+	}
+	
+Variable no of parameter 
+------------------------
+-- We use ellipse (dataType... variableName)
+	Ex : public class Demo {
+	public static void myMethod(int...is ) {         Here int...is is actually int is[] but this can be done only with last parameter 
+		System.out.println("asd");                          
+	}
+	public static void main(String[] args) {
+		Demo.myMethod(1,2,3,4);
+	}
+	}

@@ -1,0 +1,81 @@
+- Version Control System(VCS) :
+	Version Control System(VCS) is a system which is used to keep records of all the changes that are being done on a file or set of files
+	so that the previous versions can be recalled and used later.
+	
+- Types of VCS :
+	- Local VCS : Different versions are stored in database inside local machine. Con - Developer can not collaborate
+	- Centralized VCS : Different versions are stored inside a server so that different developers can collaborate with each other. 
+	 					Con -   If the server is down for sometime, then no one can collaborate or save version on server during that time.
+								No backup, If files are corrupted in server then all files are lost.
+	- Distributed VCS : Here also the versions are stored in server but here the client doesn't check out the latest snapshots file
+						rather they fully mirror the whole repository in their system. So if server dies any of the client repository can be copiwd
+						back to the server.
+						
+- Git : It is a distributed VCS. Git is installed and maintained on your local system (rather than in the cloud) 
+		and gives you a self-contained record of your ongoing programming versions. 
+		It can be used completely exclusive of any cloud-hosting service — you don’t even need internet access
+- Github : It is a cloud hosting website where we can store our git repository.
+
+- File Stages : 
+	Modified : Files that are changed or modified but not yet staged or comitted 
+	Staged : Modified files are marked for next commit. Before commit, modified files should be staged.
+	Commited : Files that are stored safely into the git repository.
+	
+- Three main section of git project : 
+	Working Tree or Directory : Directory where we pull or clone the project and modify the files.
+	Staging Area : It is bacically a file inside git directory which contains the information about the files for next commit.
+	Git Directory : Directory which contains the metadata and the main project. Whenever we clone a project, files are being fetched from git directory.
+	
+- Git Workflow : 
+	1. You modify files in your working tree.
+	2. You selectively stage just those changes you want to be part of your next commit, which adds
+		only those changes to the staging area.	
+	3. You do a commit, which takes the files as they are in the staging area and stores that snapshot
+		permanently to your Git directory.
+		
+- If a particular version of a file is in the Git directory, it’s considered committed. 
+  If it has been modified and was added to the staging area, it is staged. 
+  And if it was changed since it was checked out but has not been staged, it is modified.
+  
+- Creating a git repository : 
+	Command : git init
+	If we have a directory andd we want to make it a git repository, we have go to that directory with cmd and type command git init
+	It will make it a git repository and add the .git folder that contains all the metadata.
+	
+- git clone : make a copy of the git repository into the local
+
+- Inside working directory, files can be either in tracked or untracked state.
+	- Tracked files are unmodified, modified or staged files basically files that git knows.
+	- Untracked files are everything else — any files in your working directory that were not in your last
+		snapshot and are not in your staging area.
+		
+- git status : command to check the state or status of files. It also shows the branch.
+
+- git add filename : command to change the untracked files to tracked file and to staged state making the files ready for commit
+					 also changes the modified files to staged state making it ready for commit.
+- git add . : to change all the untracked and modified files to staged state making the files ready for commit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

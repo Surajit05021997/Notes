@@ -1,0 +1,8 @@
+Hash Table
+----------
+-- It implements the Map interface.
+-- It Stores data in key value pair form.
+-- It takes the key and pass it through the hash function. This generates a hash code.
+   But this hash code is very big number so we reduce the range by applying some formula and we finnaly get the index.
+   Now we store the key value pair in this index.
+-- Some time index generated is same then we apply linked list to store the key value pair.

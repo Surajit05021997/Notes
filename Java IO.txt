@@ -1,0 +1,35 @@
+- Java IO : Introduced in Java 1(1996)
+  Java NIO(Non Blocking IO) : Introduced in Java 4(2002)
+  Java NIO 2 : Introduced in Java 7(2011)
+  
+- Java IO : read and write information in bytes or char
+
+- Java IO API is organized in four base classes :
+	Reader and writter for character
+	Inputstream and Outputstream for raw bytes
+
+- Java IO has utility class 
+	File (Introduced in Java IO)
+	Path (Interface introduced in Java NIO 2)
+	
+- Reader class : read character from file
+  Writter class : write character into file
+  Inuptstream class :read raw bytes from binary file
+  Outputstream class : write raw bytes into binary file
+  
+- File and Path are the model of file or directory on disk.
+	File :
+		Creating file object : File file = new File("path_of_file.txt");  --path can be relative or absolute path
+		                                                                  --file constructor takes a string which represent a file or directory.
+		Creating a file object does not create anything on disk.
+		File object can represent a file or directory.
+	Path :
+		-check for file or directory
+		-create/touch/delete
+		-get name, path, etc.  
+		Above three point are also there in File class
+		-get the attribute of file such as security attriute
+		-methods to check for directory events
+		
+	
+  
